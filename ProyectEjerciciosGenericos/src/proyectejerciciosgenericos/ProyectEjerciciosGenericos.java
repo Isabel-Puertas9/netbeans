@@ -22,20 +22,23 @@ public class ProyectEjerciciosGenericos {
         Pelicula p3=new Pelicula("INGLÉS",89,"Ficcion","Star Wars III");
         Pelicula p4=new Pelicula("ESPAÑOL",78,"COMEDIA","El discurso del Rey");
         Pelicula p5=new Pelicula("FRANCÉS", 123,"INFANTIL","Shrek");
-        ArrayList<Producto> arrPelis=new ArrayList<Producto>();
+        ArrayList<Producto> arrProductos=new ArrayList<Producto>();
         
-        Generica<Producto> pelis=new Generica<Producto>(arrPelis);
+        Generica<Producto> pelis=new Generica<Producto>(arrProductos);
         pelis.aniadir(p1);
         pelis.aniadir(p2);
         pelis.aniadir(p3);
         
         System.out.println("Listado de Películas---");
-        Generica.listarArrayList(arrPelis);        
+        Generica.listarArrayList(arrProductos);        
         
         System.out.println("Extraigo la 1ª peli: "+pelis.extraer());
         
-        System.out.println("Listado de Películas---");
-        Generica.listarArrayList(arrPelis);        
+        System.out.println("Listado de Películas de pelis---");
+        pelis.mostrar();
+        
+        System.out.println("Listado del Array Productos---");
+        Generica.listarArrayList(arrProductos);        
     }
     
 }

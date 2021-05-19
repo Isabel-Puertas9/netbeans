@@ -38,7 +38,11 @@ public class Generica <T extends Producto> {
         return pr;
     }
     
-    public static void listarArrayList(ArrayList<? extends Producto> lista)
+    public void mostrar(){
+        for(T p: this.lista) System.out.println("-"+p);
+    }
+       
+    public static void listarArrayList(ArrayList<? extends Producto>  lista)
     {
         for(Producto p: lista) System.out.println("-"+p);
     }
