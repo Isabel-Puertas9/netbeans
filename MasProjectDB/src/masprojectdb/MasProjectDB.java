@@ -5,7 +5,6 @@
  */
 package masprojectdb;
 
-//import com.sun.jdi.connect.spi.Connection;
 import java.sql.*;
         
 /**
@@ -32,7 +31,45 @@ public class MasProjectDB {
            catch(ClassNotFoundException ex){
                System.out.println("El driver no ha podido ser cargado");
            }
-
+        
+        //Realizar un listado completo de la tabla de clientes
+        // SELECT * FROM clientes
+        String sql="SELECT * FROM clientes";
+        try{            
+            PreparedStatement sentencia=conexion.prepareStatement(sql);
+            ResultSet cursor=sentencia.executeQuery();
+            System.out.println("LISTADO DE CLIENTES----");
+            while (cursor.next()){
+                System.out.println(cursor.getInt(1)+" "+cursor.getString("nombre"));
+            }
+        }catch(SQLException ex){
+            System.out.println("Error en la creación del select  "+sql);
+        }
+        
+        //Diseña un método, tal que dado un cli_no
+        //nos muestra el cliente con ese número
+        // busquedaPrimayKey
+        busquedaPrimaryKey(conexion, 108);
+        
+        
     }
+    
+    public static void busquedaPrimaryKey(Connection conexion, int numero){       
+            String sql="SELECT * FROM clientes WHERE cli_no="+numero;
+            try{            
+                PreparedStatement sentencia=conexion.prepareStatement(sql);
+                ResultSet cursor=sentencia.executeQuery();
+                System.out.println("CLIENTE cuyo número de Id es : "+numero);            
+                while (cursor.next()){
+                    System.out.println(cursor.getInt("cli_no")+" "+cursor.getString("nombre"));
+                }            
+            }catch(SQLException ex){
+            System.out.println("Error en la creación del select  "+sql);
+            }
+    }
+    
+    //Método estático busquedaNombre tq dada la conexion y el nombre
+    // muestra todos los clientes cuyo nombre comience por lnombre
+    
     
 }
